@@ -5,7 +5,7 @@ interface BillboardProps {
   data: BillboardType;
 }
 
-const Billboard: FC<BillboardProps> = ({ data }) => {
+export const Billboard: FC<BillboardProps> = ({ data }) => {
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
       <div
@@ -21,5 +21,3 @@ const Billboard: FC<BillboardProps> = ({ data }) => {
     </div>
   );
 };
-
-export default Billboard;
