@@ -4,7 +4,7 @@ import { ShoppingBag } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import Button from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 export const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);

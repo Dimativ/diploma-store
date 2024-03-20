@@ -1,6 +1,6 @@
-import ProductCard from '@/components/ui/product-card';
+import { ProductCard } from '@/components/ui/product-card';
 import { Product } from '@/types';
-import NoResults from '@/components/ui/no-results';
+import { NoResults } from '@/components/ui/no-results';
 import { FC } from 'react';
 
 interface ProductListProps {
@@ -8,7 +8,7 @@ interface ProductListProps {
   items: Product[];
 }
 
-const ProductList: FC<ProductListProps> = ({ title, items }) => {
+export const ProductList: FC<ProductListProps> = ({ title, items }) => {
   return (
     <div className="space-y-4">
       <h3 className="font-bold text-3xl">{title}</h3>
@@ -21,5 +21,3 @@ const ProductList: FC<ProductListProps> = ({ title, items }) => {
     </div>
   );
 };
-
-export default ProductList;

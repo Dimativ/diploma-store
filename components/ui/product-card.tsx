@@ -4,17 +4,26 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { Expand, ShoppingCart } from 'lucide-react';
 
-import Currency from '@/components/ui/currency';
-import IconButton from '@/components/ui/icon-button';
+import { Currency } from '@/components/ui/currency';
+import { IconButton } from '@/components/ui/icon-button';
 import { Product } from '@/types';
+import { useRouter } from 'next/navigation';
 
 interface ProductCard {
   data: Product;
 }
 
-const ProductCard: FC<ProductCard> = ({ data }) => {
+export const ProductCard: FC<ProductCard> = ({ data }) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/product/${data?.id}`);
+  };
+
   return (
-    <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+    <div
+      onClick={handleClick}
+      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+    >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image
           src={data.images?.[0]?.url}
@@ -42,5 +51,3 @@ const ProductCard: FC<ProductCard> = ({ data }) => {
     </div>
   );
 };
-
-export default ProductCard;
