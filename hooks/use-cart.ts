@@ -1,6 +1,6 @@
-import { create } from 'zustand';
+import { create, StateCreator } from 'zustand';
 import { toast } from 'react-hot-toast';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist, createJSONStorage, PersistOptions } from 'zustand/middleware';
 
 import { Product } from '@/types';
 
@@ -10,10 +10,14 @@ interface CartStore {
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
+type MyPersist = (
+  config: StateCreator<CartStore>,
+  options: PersistOptions<CartStore>,
+) => StateCreator<CartStore>;
 
-const useCart = create(
-  persist<CartStore>(
-    (set, get) => ({
+const useCart = create<CartStore, []>(
+  (persist as MyPersist)(
+    (set, get): CartStore => ({
       items: [],
       addItem: (data: Product) => {
         const currentItems = get().items;
